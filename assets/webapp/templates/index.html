@@ -1,0 +1,38 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1"
+    />
+    <title>MolStar Trajectory Viewer</title>
+    <link rel="stylesheet" href="/static/styles.css" />
+  </head>
+  <body>
+    <main class="page">
+      <header class="header">
+        <div>
+          <h1>MolStar Trajectory Viewer</h1>
+          <p>Select a trajectory and scrub frames.</p>
+        </div>
+      </header>
+      <section class="controls">
+        <label class="field">
+          <span>Trajectory</span>
+          <select id="trajectory-select"></select>
+        </label>
+        <label class="field">
+          <span>Frame</span>
+          <input id="frame-slider" type="range" min="0" max="99" step="1" value="0" />
+          <output id="frame-value">0</output>
+        </label>
+      </section>
+      <section class="viewer-panel">
+        <div id="molstar-container" class="viewer"></div>
+        <div id="status" class="status">Ready.</div>
+      </section>
+    </main>
+    <script src="/static/app.js"></script>
+  </body>
+</html>
