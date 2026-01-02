@@ -37,3 +37,4 @@ await updateModelIndex(viewer.plugin, Number(slider.value));
 Notes:
 - Keep Mol* layout defaults aligned with the widget (controls off, log on, no welcome).
 - Use dynamic lookup for `modelIndex`/`frameIndex` updates to avoid stale refs.
+- Start with "viewportShowExpand: false" to avoid going fullscreen.

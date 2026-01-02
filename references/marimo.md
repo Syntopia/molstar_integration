@@ -37,10 +37,12 @@ widget
 ```
 
 Notes:
-- Put all imports and code inside `@app.cell` functions (no global imports or defs).
-- Underscore-prefixed variables are cell-local and not visible to later cells.
+- Do not put logic and code for setting up and preparing state into separate files. Put it in the Marimo notebook, unless otherwise asked for.
+- Put all imports and code inside `@app.cell` functions (no global imports or functions outside @app.cell!).
+- Underscore-prefixed variables are cell-local and not visible to later cells. Most widget definations should be global (no underscore).
+- You cannot refer to a widgets state in the same cell that created it.
 - Ensure `frame_index` is updated in its own cell (avoid UI element state dependence in the same cell).
-- Put imports in an `@app.cell` and add the local module path, for example:
+- Put imports in the first `@app.cell` and add the local module path, for example:
 
 ```python
 @app.cell

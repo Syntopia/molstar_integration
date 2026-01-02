@@ -90,23 +90,6 @@ async function updateModelIndex(plugin, frameIndex) {
   await builder.commit();
 }
 
-function getTrajectoryFrameCount(plugin) {
-  try {
-    const state = plugin?.state?.data;
-    if (!state) return 0;
-    const modelNodes = state.select(plugin.state.transforms.model.ModelFromTrajectory);
-    if (!modelNodes.length) return 0;
-    const modelNode = modelNodes[0];
-    const trajectoryRef = modelNode.transform.parent;
-    const trajectoryNode = state.cells.get(trajectoryRef);
-    const trajectory = trajectoryNode?.obj?.data;
-    return trajectory?.frameCount || 0;
-  } catch (error) {
-    console.warn('[molstar-webapp] Failed to read frame count', error);
-    return 0;
-  }
-}
-
 async function loadTrajectory(trajId) {
   if (!trajId) return;
   if (loading) return;
@@ -121,14 +104,7 @@ async function loadTrajectory(trajId) {
     const bytes = new Uint8Array(buffer);
     await viewer.loadMvsData(bytes, 'mvsx');
     logStatus('Rendered MolViewSpec', trajId);
-    const frameCount = getTrajectoryFrameCount(viewer.plugin);
-    if (frameCount > 0) {
-      sliderEl.max = String(frameCount - 1);
-      logStatus('Loaded frames', `count=${frameCount}`);
-    } else {
-      sliderEl.max = '99';
-    }
-    await updateModelIndex(viewer.plugin, Number(sliderEl.value));
+    sliderEl.max = '99';
   } catch (error) {
     console.error('[molstar-webapp] Failed to load trajectory', error);
     logStatus('Failed to load trajectory');

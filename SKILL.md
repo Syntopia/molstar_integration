@@ -19,9 +19,9 @@ Integrate Mol* using MolViewSpec (MVSJ/MVSX) across notebooks and webapps. Use t
 2. For notebooks (Jupyter and Marimo), pass the builder to `MolStarWidget` together with local data (molecules/trajectories) in a `data` dict.
 3. For web apps, use the example below: build an MVSJ description, package it into an MVSX (zip with `index.mvsj` + bundled files), and load it via Mol* `viewer.loadMvsData(bytes, "mvsx")`.
 
-## Examples (This Repo)
+## Concrete implementations
 
-Load the reference files when you need concrete snippets:
+Always start by reading more about the specific type of integration:
 
 - **Jupyter**: `.codex/skills/molstar-integration/references/jupyter.md`
 - **Marimo**: `.codex/skills/molstar-integration/references/marimo.md`
@@ -29,7 +29,7 @@ Load the reference files when you need concrete snippets:
 
 ## Bundled Widget Source
 
-The full AnyWidget wrapper is bundled here for reuse:
+The full AnyWidget wrapper is bundled here for reuse (can be copied directly):
 
 - `.codex/skills/molstar-integration/assets/molstar_widget/`
 
@@ -56,8 +56,3 @@ Use representation parameters and Mol* color themes:
 Reference the official MolViewSpec docs for schema details and capabilities:
 
 - https://molstar.org/mol-view-spec-docs/
-
-## License
-
-MIT License. See `.codex/skills/molstar-integration/LICENSE.txt`.
-Author: Mikael Hvidtfeldt Christensen
